@@ -12,8 +12,8 @@ module Checkers
   end
 
   class Player < Game::Player
-    def initialize(role)
-      @role = role
+    def initialize(color)
+      @role = color
     end
 
     def bad_move(board, move)

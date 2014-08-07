@@ -28,12 +28,17 @@ module Checkers
     RowCount = ColumnCount = 8
     Position = Struct.new(:row, :column)
     Piece    = Struct.new(:color, :type)
+    Move     = Struct.new(:from, :to)
 
     def initialize
       init_board
     end
 
     def update!(move)
+      piece = piece_at(move.from)
+
+      set_piece_at(move.from, nil)
+      set_piece_at(move.to, piece)
     end
 
     def piece_at(position)

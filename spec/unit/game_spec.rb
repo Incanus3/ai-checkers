@@ -10,7 +10,9 @@ describe Game do
 
   subject(:game)     { Game.new(players, [:white, :black], board, judge) }
 
-  let(:move)         { double }
+  let(:from)         { Checkers::Board::Position.new(3,1) }
+  let(:to)           { Checkers::Board::Position.new(4,2) }
+  let(:move)         { Checkers::Board::Move.new(from, to) }
   let(:result)       { Game::Result.new(:win, :white) }
 
   before do
