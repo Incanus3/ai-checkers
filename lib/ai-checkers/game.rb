@@ -13,12 +13,13 @@ class Game
   include ValueObject.new(:players, :player_order, :board, :judge)
 
   def run
-    player_order.cycle do |current_player|
-      player = players[current_player]
-      result = round(player)
+    catch :interrupt do
+      player_order.cycle do |current_player|
+        player = players[current_player]
+        result = round(player)
 
-      return result if result
-      return if @interrupt
+        return result if result
+      end
     end
   end
 
@@ -32,7 +33,7 @@ class Game
       judge.result_if_over(board)
     else
       player.bad_move(board, move)
-      @interrupt = true
+      throw :interrupt
     end
   end
 end
