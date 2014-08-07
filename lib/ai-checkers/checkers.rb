@@ -11,7 +11,6 @@ module Checkers
 
   class Judge
     def valid_move?(board, move)
-      true
     end
 
     def result_if_over(board)

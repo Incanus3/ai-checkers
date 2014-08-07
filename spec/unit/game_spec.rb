@@ -11,12 +11,14 @@ describe Game do
 
   subject(:game)     { Game.new(players, [:white, :black], board, judge) }
 
-  let(:move) { double }
-  let(:result) { Game::Result.new(:win, :white) }
+  let(:move)         { double }
+  let(:result)       { Game::Result.new(:win, :white) }
 
   before do
     allow(white_player).to receive(:move) { move }
     allow(black_player).to receive(:move) { move }
+
+    allow(judge).to receive(:valid_move?) { true }
 
     # game ends with result in second round
     first_time = true
