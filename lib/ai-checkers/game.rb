@@ -10,6 +10,8 @@ class Game
 
   Result = Struct.new(:outcome, :winner)
 
+  # @attr players      Hash<Symbol, Player>
+  # @attr player_order [Symbol]
   include ValueObject.new(:players, :player_order, :board, :judge)
 
   def run
@@ -26,6 +28,7 @@ class Game
   private
 
   def round(player)
+    # could take board and list of valid moves
     move = player.move(board, judge)
 
     if judge.valid_move?(board, move)
