@@ -3,8 +3,8 @@ require 'ai-checkers/game'
 require 'ai-checkers/checkers'
 
 describe Game do
-  let(:white_player) { Player.new(:white) }
-  let(:black_player) { Player.new(:black) }
+  let(:white_player) { Checkers::Player.new(:white) }
+  let(:black_player) { Checkers::Player.new(:black) }
   let(:players)      { { white: white_player, black: black_player } }
   let(:board)        { Checkers::Board.new(8,8) }
   let(:judge)        { Checkers::Judge.new }
@@ -12,7 +12,7 @@ describe Game do
   subject(:game)     { Game.new(players, [:white, :black], board, judge) }
 
   let(:move) { double }
-  let(:result) { Result.new(:win, :white) }
+  let(:result) { Game::Result.new(:win, :white) }
 
   before do
     allow(white_player).to receive(:move) { move }
@@ -53,7 +53,7 @@ describe Game do
     game.run
   end
 
-  it 'returns result if over' do
+  it 'returns result when over' do
     game_result = game.run
 
     expect(game_result).to be result

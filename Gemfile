@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'abstract_type'
+
 group :test do
   gem 'rspec'
   gem 'guard-rspec'

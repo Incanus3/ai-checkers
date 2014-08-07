@@ -18,4 +18,13 @@ module Checkers
       # Result.new(:win, :white)
     end
   end
+
+  class Player < Game::Player
+    def initialize(role)
+      @role = role
+    end
+
+    def bad_move(board, move)
+    end
+  end
 end
