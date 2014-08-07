@@ -1,4 +1,5 @@
 require 'abstract_type'
+require 'ai-checkers/utils/value_object'
 
 class Game
   class Player
@@ -9,14 +10,7 @@ class Game
 
   Result = Struct.new(:outcome, :winner)
 
-  attr_reader :players, :player_order, :board, :judge
-
-  def initialize(players, player_order, board, judge)
-    @players      = players
-    @player_order = player_order
-    @board        = board
-    @judge        = judge
-  end
+  include ValueObject.new(:players, :player_order, :board, :judge)
 
   def run
     player_order.cycle do |current_player|
