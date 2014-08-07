@@ -34,6 +34,10 @@ module Checkers
       init_board
     end
 
+    def raw_board
+      @board
+    end
+
     def update!(move)
       piece = piece_at(move.from)
 
@@ -42,7 +46,7 @@ module Checkers
     end
 
     def piece_at(position)
-      @board[position.row - 1][position.column - 1]
+      raw_board[position.row - 1][position.column - 1]
     end
 
     private
@@ -62,7 +66,7 @@ module Checkers
     end
 
     def set_piece_at(position, piece)
-      @board[position.row - 1][position.column - 1] = piece
+      raw_board[position.row - 1][position.column - 1] = piece
     end
   end
 end
