@@ -29,6 +29,10 @@ END
           expect(Presenter.new(Board.new).to_s)
             .to eq representation
         end
+      end # describe '#to_s'
+
+      describe '.from_string' do
+        it 'creates Board from textual representation'
       end
     end
   end
