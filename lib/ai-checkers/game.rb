@@ -2,18 +2,6 @@ require 'abstract_type'
 require 'ai-checkers/utils/value_object'
 
 class Game
-  class Player
-    include AbstractType
-
-    def move(board, judge)
-      raise NotImplementedError
-    end
-
-    def bad_move(board, move)
-      raise NotImplementedError
-    end
-  end
-
   Result = Struct.new(:outcome, :winner)
 
   # @attr players      Hash<Symbol, Player>
