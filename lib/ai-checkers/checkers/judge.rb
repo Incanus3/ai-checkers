@@ -1,5 +1,8 @@
 module Checkers
   class Judge
+    def valid_moves_from(board, position)
+    end
+
     def valid_move?(board, move)
     end
 

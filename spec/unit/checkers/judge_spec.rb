@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'ai-checkers/checkers/judge'
+require 'ai-checkers/checkers/board'
 
 module Checkers
   describe Judge do
@@ -7,8 +8,13 @@ module Checkers
 
     include_examples 'judge lint'
 
-    describe '#valid_moves_from' do
-      it 'returns list of valid moves form given position'
+    describe '#valid_moves_from',:focus do
+      it 'returns list of valid moves form given position' do
+        board    = Board.new
+        position = Board::Position.new(1,1)
+
+        moves = judge.valid_moves_from(board, position)
+      end
     end
 
     describe '#valid_moves_for' do
