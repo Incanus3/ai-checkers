@@ -52,7 +52,11 @@ describe Game do
     game.run
   end
 
-  # test reaction to bad move - notification of players
+  # TODO: test reaction to bad move
+  # - notification of players
+  # - skip of board update, loop interrupt, error result
+  # - or asking player for new move
+  # - player can signal interruption
   it 'validates move returned by player' do
     expect(judge).to receive(:valid_move?).with(board, move)
 
