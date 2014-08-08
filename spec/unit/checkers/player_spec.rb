@@ -1,13 +1,7 @@
 require 'spec_helper'
-require 'ai-checkers/checkers'
+require 'ai-checkers/checkers/player'
 
 module Checkers
-  describe Judge do
-    let(:judge) { Judge.new }
-
-    include_examples 'judge lint'
-  end
-
   describe Player do
     let(:player) { Player.new(:white) }
 

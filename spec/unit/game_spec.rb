@@ -1,6 +1,8 @@
 require 'spec_helper'
 require 'ai-checkers/game'
 
+# integration test - make two players which make predefined sequence of move,
+# test game outcome
 describe Game do
   let(:move)         { double('move') }
   let(:board)        { double('board', update!: nil) }
