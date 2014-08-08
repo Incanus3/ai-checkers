@@ -6,5 +6,9 @@ module Checkers
     let(:player) { Player.new(:white) }
 
     include_examples 'player lint'
+
+    describe '#move' do
+      it 'returns a valid move'
+    end
   end
 end
