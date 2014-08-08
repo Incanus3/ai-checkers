@@ -7,7 +7,6 @@ module Checkers
     end
 
     def result_if_over(board)
-      # Result.new(:win, :white)
     end
   end
 

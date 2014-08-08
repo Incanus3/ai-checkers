@@ -1,5 +1,8 @@
 require 'simplecov'
 
+require_relative 'support/shared_examples'
+require_relative 'support/fakes'
+
 RSpec.configure do |c|
   c.expect_with :rspec do |c|
     c.syntax = :expect

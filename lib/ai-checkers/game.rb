@@ -5,7 +5,13 @@ class Game
   class Player
     include AbstractType
 
-    abstract_method :move, :bad_move
+    def move(board, judge)
+      raise NotImplementedError
+    end
+
+    def bad_move(board, move)
+      raise NotImplementedError
+    end
   end
 
   Result = Struct.new(:outcome, :winner)
