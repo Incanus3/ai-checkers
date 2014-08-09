@@ -28,12 +28,20 @@ module Checkers
     RowCount = ColumnCount = 8
 
     Position = Struct.new(:row, :column) do
-      def initialize(row, column)
-        super
+      def self.new!(row, column)
+        new(row, column).validate
+      end
 
+      def validate
         raise ArgumentError, "row #{row} is out of bounds" unless valid_row?
         raise ArgumentError, "column #{column} is out of bounds" unless valid_column?
       end
+
+      def valid?
+        valid_row? && valid_column?
+      end
+
+      private
 
       def valid_row?
         0 < row && row <= RowCount
@@ -64,6 +72,10 @@ module Checkers
 
     def piece_at(position)
       raw_board[position.row - 1][position.column - 1]
+    end
+
+    def free?(position)
+      piece_at(position).nil?
     end
 
     private
