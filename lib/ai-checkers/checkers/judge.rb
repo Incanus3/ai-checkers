@@ -1,7 +1,7 @@
 module Checkers
   class Judge
     def valid_moves_from(board, position)
-      get_targets(position).select { |t| t.valid? && board.free?(t) }
+      get_targets(board, position).select { |t| t.valid? && board.free?(t) }
         .map { |t| Board::Move.new(position, t) }
     end
 
@@ -14,9 +14,11 @@ module Checkers
 
     private
 
-    def get_targets(position)
-      [Board::Position.new(position.row + 1, position.column - 1),
-       Board::Position.new(position.row + 1, position.column + 1)]
+    def get_targets(board, position)
+      # if position referenced board, this could be position.piece.color (LoD)
+      color = board.piece_at(position).color
+
+      [position.forward(color).left(color), position.forward(color).right(color)]
     end
   end
 end

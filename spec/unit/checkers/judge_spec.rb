@@ -59,7 +59,6 @@ module Checkers
 
         context 'when both target positions are valid' do
           it 'returns forward-left and forward-right moves' do
-            pending
             moves = judge.valid_moves_from(board, position)
 
             expect(moves).to match_array [Board::Move.new(position, left_target),

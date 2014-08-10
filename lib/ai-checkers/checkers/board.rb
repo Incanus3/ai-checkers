@@ -41,6 +41,35 @@ module Checkers
         valid_row? && valid_column?
       end
 
+      # these may return invalid positions
+      # these call for polymorphysm, but what's the concept here?
+      def forward(color)
+        case color
+        when :white
+          self.class.new(row + 1, column)
+        when :black
+          self.class.new(row - 1, column)
+        end
+      end
+
+      def left(color)
+        case color
+        when :white
+          self.class.new(row, column - 1)
+        when :black
+          self.class.new(row, column + 1)
+        end
+      end
+
+      def right(color)
+        case color
+        when :white
+          self.class.new(row, column + 1)
+        when :black
+          self.class.new(row, column - 1)
+        end
+      end
+
       private
 
       def valid_row?
