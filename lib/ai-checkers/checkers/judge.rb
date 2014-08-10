@@ -6,6 +6,7 @@ module Checkers
     end
 
     def valid_move?(board, move)
+      valid_moves_from(board, move.from).include? Board::Move.new(move.from, move.to)
     end
 
     def result_if_over(board)

@@ -48,6 +48,25 @@ module Checkers
           end
         end
       end # context 'for white pawn'
+
+      context 'for black pawn' do
+        let(:position)     { Board::Position.new(6,2) }
+
+        let(:left_target)  { Board::Position.new(5,1) }
+        let(:right_target) { Board::Position.new(5,3) }
+
+        let(:piece)        { Board::Piece.new(:black, :pawn) }
+
+        context 'when both target positions are valid' do
+          it 'returns forward-left and forward-right moves' do
+            pending
+            moves = judge.valid_moves_from(board, position)
+
+            expect(moves).to match_array [Board::Move.new(position, left_target),
+                                          Board::Move.new(position, right_target)]
+          end
+        end # context 'when both target positions are valid'
+      end # context 'for black pawn'
     end # describe '#valid_moves_from'
 
     describe '#valid_moves_for' do
@@ -55,8 +74,17 @@ module Checkers
     end
 
     describe '#valid_move?' do
-      it 'returns true for valid move'
-      it 'returns false for invalid move'
+      let(:position)    { Board::Position.new(3,3) }
+      let(:good_target) { Board::Position.new(4,2) }
+      let(:bad_target)  { Board::Position.new(5,1) }
+
+      it 'returns true for valid move' do
+        expect(judge.valid_move?(board, Board::Move.new(position, good_target))).to be true
+      end
+
+      it 'returns false for invalid move' do
+        expect(judge.valid_move?(board, Board::Move.new(position, bad_target))).to be false
+      end
     end
   end
 end
